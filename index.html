@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BotUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="node_modules/botui/build/botui.min.css" />
+    <link rel="stylesheet" href="node_modules/botui/build/botui-theme-default.css" />
+  </head>
+  <body>
+    <div class="botui-app-container" id="delivery-bot">
+      <bot-ui></bot-ui>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/v-mask/dist/v-mask.js"></script>
+    <script src="node_modules/botui/build/botui.js"></script>
+    <script>
+      // As a plugin
+      Vue.use(VueMask.VueMaskPlugin);
+
+      var botui = new BotUI('delivery-bot'),
+          address = 'House 1, First Ave.';
+
+      botui.message
+        .bot('Where would you like the package to be delivered?')
+        .then(function () {
+          return botui.action.text({
+            action: {
+              placeholder: 'Digite o CEP: XXXXX-XXX',
+              mask: '#####-###'
+            }
+          })
+      }).then(function (res) {
+        end();
+      });
+
+      var end = function () {
+        botui.message
+          .bot({
+            delay: 1000,
+            content: 'Thank you. Your package will shipped soon.'
+          });
+      }
+    </script>
+  </body>
+</html>
