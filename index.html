@@ -12,11 +12,11 @@
       <bot-ui></bot-ui>
     </div>
     <script src="node_modules/vue/dist/vue.js"></script>
-    <script src="node_modules/v-mask/dist/v-mask.js"></script>
+    <script src="node_modules/vue-the-mask/dist/vue-the-mask.js"></script>
     <script src="node_modules/botui/build/botui.js"></script>
     <script>
       // As a plugin
-      Vue.use(VueMask.VueMaskPlugin);
+      Vue.use(VueTheMask);
 
       var botui = new BotUI('delivery-bot'),
           address = 'House 1, First Ave.';
