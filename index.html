@@ -26,13 +26,19 @@
         .then(function () {
           return botui.action.text({
             action: {
-              placeholder: 'Digite o CEP: XXXXX-XXX',
-              mask: '#####-###'
+              placeholder: 'Digite o CPF/CNPJ',
+              mask: ['###.###.###-##', '##.###.###/####-##']
             }
           })
-      }).then(function (res) {
-        end();
-      });
+        }).then(function () {
+          return botui.action.text({
+            action: {
+              placeholder: 'Digite o algo'
+            }
+          })
+        }).then(function (res) {
+          end();
+        });
 
       var end = function () {
         botui.message
